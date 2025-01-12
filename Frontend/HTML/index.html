@@ -3,31 +3,42 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Simple Form</title>
+        <title>Alstylist</title>
+        <link rel="icon" href="../../favicon.png" />
+        <link rel="stylesheet" href="../CSS/style.css" />
     </head>
     <body>
-        <form id="myForm">
-            <label for="inputVariable">Enter a value:</label>
-            <input type="text" id="inputVariable" name="variable" required />
-            <button type="submit">Submit</button>
-        </form>
+        <div class="container">
+            <header class="header">
+                <div class="header-top">
+                    <h1 class="logo">
+                        <img
+                            src="../assets/logo.png"
+                            alt="logo"
+                            class="logo-image"
+                        />
+                    </h1>
+                </div>
+                <div class="search-bar">
+                    <input
+                        type="text"
+                        id="search-input"
+                        placeholder="Search for products..."
+                    />
+                    <button id="search-btn">Search</button>
+                </div>
+            </header>
 
-        <script>
-            const form = document.getElementById("myForm");
-            form.addEventListener("submit", async (event) => {
-                event.preventDefault(); // Prevent form from refreshing the page
+            <main class="main-content">
+                <section id="product-list" class="product-list">
+                    <!-- Dynamic Product List -->
+                </section>
+                <section id="coupon-section" class="coupon-section">
+                    <!-- Dynamic Coupon Section -->
+                </section>
+            </main>
+        </div>
 
-                const variable = document.getElementById("inputVariable").value;
-
-                // Send the variable to the backend
-                await fetch("/submit", {
-                    method: "POST",
-                    headers: {"Content-Type": "application/json"},
-                    body: JSON.stringify({variable}),
-                });
-
-                alert("Variable sent to the backend!");
-            });
-        </script>
+        <script src="../JavaScript/script.js"></script>
     </body>
 </html>

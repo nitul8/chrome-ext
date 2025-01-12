@@ -1,0 +1,89 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+.container {
+    width: 400px;
+    margin: 0 auto;
+    background-color: #fff;
+    min-height: 600px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.header {
+    background: linear-gradient(to right, #ff66c4, #ffde59);
+    padding: 16px;
+    color: white;
+    text-align: center;
+}
+
+.logo {
+    display: flex;
+    justify-content: start;
+}
+
+.logo-image {
+    height: 48px;
+}
+
+.search-bar {
+    display: flex;
+    justify-content: center;
+    margin-top: 8px;
+    gap: 8px;
+}
+
+.search-bar input {
+    padding: 8px;
+    width: 70%;
+    border: none;
+    border-radius: 4px;
+}
+
+.search-bar button {
+    padding: 8px 16px;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.search-bar button:hover {
+    background-color: #555;
+}
+
+.main-content {
+    padding: 16px;
+}
+
+.product-list,
+.coupon-section {
+    margin-bottom: 16px;
+}
+
+.file-upload {
+    padding: 16px;
+    text-align: center;
+    border-top: 1px solid #ddd;
+}
+
+.file-upload input {
+    margin-bottom: 8px;
+}
+
+.file-upload button {
+    padding: 8px 16px;
+    background-color: #ff66c4;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.file-upload button:hover {
+    background-color: #e255af;
+}
