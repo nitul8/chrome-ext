@@ -1,67 +1,89 @@
-// Handle Search Bar
-document.getElementById("search-form").addEventListener("submit", async (e) => {
-    e.preventDefault();
-    const query = document.getElementById("search-input").value;
+// Wait until the DOM is fully loaded to ensure elements are available
+document.addEventListener("DOMContentLoaded", function () {
+    const form = document.getElementById("myForm");
 
-    if (!query) {
-        alert("Please enter a search query!");
-        return;
+    if (form) {
+        form.addEventListener("submit", async (event) => {
+            event.preventDefault(); // Prevent form from refreshing the page
+
+            const variable = document.getElementById("search-input").value;
+
+            // Send the variable to the backend
+            await fetch("/submit", {
+                method: "POST",
+                headers: {"Content-Type": "application/json"},
+                body: JSON.stringify({variable}),
+            });
+
+            alert("Variable sent to the backend!");
+        });
     }
 
-    try {
-        const response = await fetch("http://localhost:5000/search", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({query}),
+    // Handle Search Functionality
+    document.getElementById("search-btn").addEventListener("click", () => {
+        const query = document.getElementById("search-input").value;
+        if (query) {
+            alert(`Searching for: ${query}`);
+        } else {
+            alert("Please enter a search query!");
+        }
+    });
+
+    // Handle File Upload
+    document
+        .getElementById("upload-btn")
+        .addEventListener("click", async () => {
+            const fileInput = document.getElementById("file-input");
+            const file = fileInput.files[0];
+
+            if (!file) {
+                alert("Please select a file!");
+                return;
+            }
+
+            const formData = new FormData();
+            formData.append("file", file);
+
+            try {
+                const response = await fetch("http://localhost:5000/upload", {
+                    method: "POST",
+                    body: formData,
+                });
+
+                if (!response.ok) throw new Error("Failed to process the file");
+
+                const result = await response.json();
+                console.log("Backend Response:", result);
+            } catch (error) {
+                console.error("Error:", error);
+            }
         });
 
-        if (!response.ok) throw new Error("Failed to fetch search results");
-
-        const data = await response.json();
-        updateProductList(data.products);
-    } catch (error) {
-        console.error("Error fetching search results:", error);
-    }
+    // Render initial content
+    renderProductList();
+    renderCouponSection();
 });
 
-// Update Product List
-function updateProductList(products) {
-    const productList = document.getElementById("product-items");
-    productList.innerHTML = "";
+// Mock Product List and Coupon Section Rendering
+const renderProductList = () => {
+    const productList = document.getElementById("product-list");
+    productList.innerHTML = `
+        <h2>Product List</h2>
+        <ul>
+            <li>Product 1</li>
+            <li>Product 2</li>
+            <li>Product 3</li>
+        </ul>
+    `;
+};
 
-    if (!products || products.length === 0) {
-        productList.innerHTML = "<li>No products found!</li>";
-        return;
-    }
-
-    products.forEach((product) => {
-        const listItem = document.createElement("li");
-        listItem.textContent = product.name;
-        productList.appendChild(listItem);
-    });
-}
-
-// Load Coupons
-async function loadCoupons() {
-    try {
-        const response = await fetch("http://localhost:5000/coupons");
-
-        if (!response.ok) throw new Error("Failed to fetch coupons");
-
-        const data = await response.json();
-        const couponSection = document.getElementById("coupon-items");
-
-        data.coupons.forEach((coupon) => {
-            const listItem = document.createElement("li");
-            listItem.textContent = `${coupon.code} - ${coupon.discount}% off`;
-            couponSection.appendChild(listItem);
-        });
-    } catch (error) {
-        console.error("Error loading coupons:", error);
-    }
-}
-
-// Initialize Page
-document.addEventListener("DOMContentLoaded", loadCoupons);
+const renderCouponSection = () => {
+    const couponSection = document.getElementById("coupon-section");
+    couponSection.innerHTML = `
+        <h2>Available Coupons</h2>
+        <ul>
+            <li>Coupon 1: 10% Off</li>
+            <li>Coupon 2: Free Shipping</li>
+        </ul>
+    `;
+};
