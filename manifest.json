@@ -1,0 +1,15 @@
+{
+    "manifest_version": 3,
+    "name": "Alstylist",
+    "version": "1.0.1",
+    "description": "A Chrome extension helps you to buy product which is pocket friendly.",
+    "action": {
+        "default_popup": "index.html",
+        "default_icon": {
+            "16": "favicon-16x16.png",
+            "32": "favicon-32x32.png",
+            "128": "favicon.ico"
+        }
+    },
+    "permissions": []
+}
