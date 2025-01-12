@@ -13,20 +13,22 @@
                 <div class="header-top">
                     <h1 class="logo">
                         <img
-                            src="../assets/logo.png"
-                            alt="logo"
-                            class="logo-image"
+                           src="../assets/logo.png"
+                           alt="logo"
+                           class="logo-image"
                         />
                     </h1>
                 </div>
-                <div class="search-bar">
-                    <input
-                        type="text"
-                        id="search-input"
-                        placeholder="Search for products..."
-                    />
-                    <button id="search-btn">Search</button>
-                </div>
+                <div>
+                    <form id="myForm" class="search-bar">
+                        <input
+                            type="text"
+                            id="search-input"
+                            placeholder="Search for products..."
+                        />
+                        <button type="submit" id="search-btn">Submit</button>
+                    </form>  
+            </div>
             </header>
 
             <main class="main-content">
@@ -37,8 +39,9 @@
                     <!-- Dynamic Coupon Section -->
                 </section>
             </main>
+            
         </div>
-
         <script src="../JavaScript/script.js"></script>
+
     </body>
 </html>
