@@ -1,13 +1,15 @@
 const express = require('express');
 const app = express();
 const PORT = 3000;
+const path = require('path');
+const parentDir = path.dirname(__dirname);
 
 // Middleware to parse JSON
 app.use(express.json());
 
 // Serve the HTML file
 app.get('/', (req, res) => {
-    res.sendFile(__dirname + "/index.html");
+    res.sendFile(parentDir+"/Frontend/HTML/index.html");
 });
 
 // Endpoint to receive the variable
