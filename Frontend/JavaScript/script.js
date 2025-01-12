@@ -1,19 +1,3 @@
-const form = document.getElementById("myForm");
-form.addEventListener("submit", async (event) => {
-    event.preventDefault(); // Prevent form from refreshing the page
-
-    const variable = document.getElementById("inputVariable").value;
-
-    // Send the variable to the backend
-    await fetch("/submit", {
-        method: "POST",
-        headers: {"Content-Type": "application/json"},
-        body: JSON.stringify({variable}),
-    });
-
-    alert("Variable sent to the backend!");
-});
-
 // script.js
 
 // Mock Product List and Coupon Section Rendering
@@ -41,13 +25,33 @@ const renderCouponSection = () => {
 };
 
 // Handle Search Functionality
-document.getElementById("search-btn").addEventListener("click", () => {
-    const query = document.getElementById("search-input").value;
-    if (query) {
-        alert(`Searching for: ${query}`);
-    } else {
-        alert("Please enter a search query!");
+const handleSearch = async (query) => {
+    if (!query) return alert("Please enter a search query!");
+
+    try {
+        const response = await fetch("/search", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({query}),
+        });
+
+        if (!response.ok)
+            throw new Error(`HTTP error! status: ${response.status}`);
+
+        const data = await response.json();
+        console.log("Search Results:", data);
+        // Update DOM with search results (if needed)
+    } catch (error) {
+        console.error("Error fetching search results:", error);
     }
+};
+
+document.getElementById("search-form").addEventListener("submit", (e) => {
+    e.preventDefault();
+    const query = document.getElementById("search-input").value.trim();
+    handleSearch(query);
 });
 
 // Handle File Upload
