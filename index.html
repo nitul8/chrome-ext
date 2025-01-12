@@ -1,14 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Document</title>
-    </head>
-    <body>
-        <form>
-            <input type="text" placeholder="Search for products..." />
-            <button type="submit">Search</button>
-        </form>
-    </body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Form</title>
+</head>
+<body>
+    <form id="myForm">
+        <label for="inputVariable">Enter a value:</label>
+        <input type="text" id="inputVariable" name="variable" required>
+        <button type="submit">Submit</button>
+    </form>
+
+    <script>
+        const form = document.getElementById('myForm');
+        form.addEventListener('submit', async (event) => {
+            event.preventDefault(); // Prevent form from refreshing the page
+
+            const variable = document.getElementById('inputVariable').value;
+
+            // Send the variable to the backend
+            await fetch('/submit', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ variable }),
+            });
+
+            alert('Variable sent to the backend!');
+        });
+    </script>
+</body>
 </html>
