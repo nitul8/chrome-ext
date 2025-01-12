@@ -1,127 +1,136 @@
-body {
-    font-family: Arial, sans-serif;
+/* Reset and base styles */
+* {
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
+    box-sizing: border-box;
 }
 
-.container {
+body {
+    font-family: "Arial", sans-serif;
+    line-height: 1.6;
+    color: #333;
+}
+
+.extension-container {
     width: 400px;
-    margin: 0 auto;
+    height: 500px;
+    overflow-y: auto;
     background-color: #fff;
-    min-height: 600px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.header {
+/* Navbar */
+.navbar {
     background: linear-gradient(to right, #ff66c4, #ffde59);
-    padding: 16px;
-    color: white;
-    text-align: center;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
 .logo {
     display: flex;
-    justify-content: start;
+    align-items: center;
 }
 
-.logo-image {
-    height: 48px;
+.logo img {
+    height: 50px;
+    width: auto;
 }
 
-.search-bar {
+/* Search and Filters */
+.search-container {
     display: flex;
-    justify-content: center;
-    margin-top: 8px;
-    gap: 8px;
+    gap: 0.5rem;
+    padding: 1rem;
+    background-color: #f5f5f5;
 }
 
-.search-bar input {
-    padding: 8px;
-    width: 70%;
-    border: none;
+.search-container input {
+    flex: 1;
+    padding: 0.5rem;
+    border: 1px solid #ddd;
     border-radius: 4px;
 }
 
-.search-bar button {
-    padding: 8px 16px;
-    background-color: #333;
+.search-container button {
+    padding: 0.5rem 1rem;
+    background-color: #ff4081;
     color: white;
     border: none;
     border-radius: 4px;
     cursor: pointer;
 }
 
-.search-bar button:hover {
-    background-color: #555;
+.search-container button:hover {
+    background-color: #f50057;
 }
 
-.main-content {
-    padding: 16px;
+.filters {
+    display: flex;
+    gap: 0.5rem;
+    padding: 0 1rem 1rem;
+    background-color: #f5f5f5;
 }
 
-.product-list,
-.coupon-section {
-    margin-bottom: 16px;
-}
-
-.file-upload {
-    padding: 16px;
-    text-align: center;
-    border-top: 1px solid #ddd;
-}
-
-.file-upload input {
-    margin-bottom: 8px;
-}
-
-.file-upload button {
-    padding: 8px 16px;
-    background-color: #ff66c4;
-    color: white;
-    border: none;
+.filters select {
+    flex: 1;
+    padding: 0.5rem;
+    border: 1px solid #ddd;
     border-radius: 4px;
-    cursor: pointer;
+    background-color: white;
 }
 
-.file-upload button:hover {
-    background-color: #e255af;
+/* Product Grid */
+.product-grid {
+    display: grid;
+    gap: 0.75rem;
+    padding: 0.75rem;
 }
 
-/* styles.css */
-.search-input {
+.product-card {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    overflow: hidden;
+    transition: transform 0.2s;
+    background-color: white;
     width: 100%;
-    padding: 10px 40px 10px 10px;
-    border-radius: 8px;
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(5px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    color: #fff;
-    outline: none;
-    font-size: 14px;
-    transition: border-color 0.2s;
 }
 
-.search-input::placeholder {
-    color: rgba(255, 255, 255, 0.7);
+.product-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
-.search-input:focus {
-    border-color: rgba(255, 255, 255, 0.5);
+.product-image {
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
 }
 
-.search-btn {
-    position: absolute;
-    top: 50%;
-    right: 10px;
-    transform: translateY(-50%);
-    background: none;
-    border: none;
-    cursor: pointer;
-    font-size: 18px;
-    color: rgba(255, 255, 255, 0.7);
+.product-info {
+    padding: 0.5rem;
 }
 
-.search-btn:hover {
-    color: rgba(255, 255, 255, 0.9);
+.product-title {
+    font-size: 0.85rem;
+    margin-bottom: 0.2rem;
+    color: #333;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.product-price {
+    font-weight: bold;
+    color: #ff4081;
+    font-size: 0.9rem;
+}
+
+.product-store {
+    color: #666;
+    font-size: 0.75rem;
+    margin-top: 0.2rem;
 }
