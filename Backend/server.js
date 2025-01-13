@@ -1,15 +1,13 @@
-const express = require("express");
-const path = require("path");
-const dotenv = require("dotenv").config();
-const {getJson} = require("serpapi");
-
+const express = require('express');
+const path = require('path');
+const { getJson } = require("serpapi"); // Import Google Shopping API module
+const dotenv = require("dotenv").config(); // dotenv to load environment variables
 const app = express();
-const PORT = process.env.PORT || 5173;
+const PORT = process.env.PORT || 5000; // Change port to match with frontend
 
-// Middleware to parse JSON and serve static files
-app.use(express.json());
+app.use(express.json()); // Middleware to parse JSON
 app.use(express.static(path.join(__dirname, "../Frontend")));
-
+// Serve static files
 
 // Endpoint to handle the search and Google Shopping API call
 app.post('/submit', async (req, res) => {
@@ -38,7 +36,6 @@ app.post('/submit', async (req, res) => {
     }
 });
 
-// Serve the HTML file
 app.get("/", (req, res) => {
     res.sendFile(path.join(__dirname, "../Frontend", "HTML", "index.html"));
 });
