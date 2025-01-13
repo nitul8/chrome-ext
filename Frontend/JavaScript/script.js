@@ -1,30 +1,31 @@
 // Sample product data (in a real app, this would come from an API)
-const products = [
-    {
-        id: 1,
-        title: "Summer Dress",
-        price: 49.99,
-        store: "Fashion Store A",
-        category: "clothing",
-        image: "https://picsum.photos/300/400",
-    },
-    {
-        id: 2,
-        title: "Running Shoes",
-        price: 89.99,
-        store: "Fashion Store B",
-        category: "shoes",
-        image: "https://picsum.photos/300/400",
-    },
-    {
-        id: 3,
-        title: "Designer Handbag",
-        price: 129.99,
-        store: "Fashion Store C",
-        category: "accessories",
-        image: "https://picsum.photos/300/400",
-    },
-];
+const pr = res.json(outputProducts);
+// const products = [
+//     {
+//         id: 1,
+//         title: "Summer Dress",
+//         price: 49.99,
+//         store: "Fashion Store A",
+//         category: "clothing",
+//         image: "https://picsum.photos/300/400",
+//     },
+//     {
+//         id: 2,
+//         title: "Running Shoes",
+//         price: 89.99,
+//         store: "Fashion Store B",
+//         category: "shoes",
+//         image: "https://picsum.photos/300/400",
+//     },
+//     {
+//         id: 3,
+//         title: "Designer Handbag",
+//         price: 129.99,
+//         store: "Fashion Store C",
+//         category: "accessories",
+//         image: "https://picsum.photos/300/400",
+//     },
+// ];
 
 // DOM Elements
 const productGrid = document.getElementById("productGrid");
@@ -54,20 +55,20 @@ function filterProducts() {
 }
 
 // Create product card HTML
-function createProductCard(product) {
+function createProductCard() {
     return `
         <div class="product-card">
             <div class="product-image-wrapper">
-                <img src="${product.image}" alt="${
-        product.title
+                <img src="${pr.thumbnail}" alt="${
+        pr.title
     }" class="product-image">
             </div>
             <div class="product-details">
-                <h3 class="product-title">${product.title}</h3>
-                <p class="product-price">₹${product.price.toFixed(2)}</p>
-                <p class="product-store">${product.store}</p>
+                <h3 class="product-title">${pr.title}</h3>
+                <p class="product-price">₹${pr.price.toFixed(2)}</p>
+                <p class="product-store">${pr.source}</p>
                 <button class="buy-now-button" aria-label="Buy Now for ${
-                    product.title
+                    pr.link
                 }">Buy Now</button>
             </div>
         </div>
