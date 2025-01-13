@@ -11,5 +11,6 @@
             "128": "favicon.png"
         }
     },
-    "permissions": ["activeTab"]
+    "permissions": ["activeTab"],
+    "host_permissions": ["http://localhost:5173/*"]
 }
