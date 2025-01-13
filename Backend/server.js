@@ -23,6 +23,8 @@ app.post("/submit", async (req, res) => {
             engine: "google_shopping",
             q: variable, // Use the search query sent from the frontend
             api_key: process.env.SERPAPI_KEY,
+            location: "Assam, India", // Set the location to Assam, India
+            currency: "INR",
         });
 
         if (result && result.shopping_results) {

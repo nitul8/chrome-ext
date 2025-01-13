@@ -60,9 +60,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 </div>
                 <div class="product-details">
                     <h3 class="product-title">${product.title}</h3>
-                    <p class="product-price">$${product.price}</p>
+                    <p class="product-price">${product.price}</p>
                     <p class="product-store">${product.source}</p>
-                    <button class="buy-now-button" aria-label="Buy Now for ${product.title}">
+                    <button class="buy-now-button" aria-label="Buy Now for ${product.link}">
                         Buy Now
                     </button>
                 </div>
