@@ -53,7 +53,7 @@ document.addEventListener("DOMContentLoaded", function () {
             const productItem = document.createElement("div");
             productItem.classList.add("product-item");
             productItem.innerHTML = `
-                <img src="${product.image}" alt="${product.title}" />
+                <img src="${product.thumbnail}" alt="${product.title}" />
                 <h3>${product.title}</h3>
                 <p>${product.price}</p>
                 <a href="${product.link}" target="_blank">View Product</a>
