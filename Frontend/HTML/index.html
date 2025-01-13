@@ -1,53 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Alstylist</title>
-    <link rel="stylesheet" href="../CSS/style.css" />
-</head>
-<body>
-    <div class="extension-container">
-        <nav class="navbar">
-            <div class="logo">
-                <img src="../assets/logo.png" alt="" />
-            </div>
-        </nav>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>alStylist</title>
+        <link rel="stylesheet" href="../CSS/style.css" />
+    </head>
+    <body>
+        <div class="extension-container">
+            <!-- Header Section -->
+            <header>
+                <nav class="navbar">
+                    <div class="logo">
+                        <img src="../assets/logo.png" alt="alStylist Logo" />
+                    </div>
+                </nav>
+            </header>
 
-        <main>
-            <div>
-                <form class="search-container" id="myForm">
-                    <input
-                        type="text"
-                        id="search-input"
-                        placeholder="Search for fashion items..."
-                    />
-                    <button type="submit">Search</button>
-                </form>
-            </div>
+            <!-- Main Content -->
+            <main>
+                <!-- Search and Filters Section -->
+                <div class="search-container">
+                    <form id="myForm" class="search-form">
+                        <input
+                            type="text"
+                            id="search-input"
+                            placeholder="Search for fashion items..."
+                            aria-label="Search for fashion items"
+                        />
+                        <button type="submit">Search</button>
+                    </form>
+                    <div class="dropdown">
+                        <button class="dropbtn">
+                            <img
+                                src="../assets/filter-logo.png"
+                                alt="Filter"
+                                class="filter-icon"
+                            />
+                        </button>
+                        <div id="priceDropdown" class="dropdown-content">
+                            <a href="#" data-value="">Filter</a>
+                            <a href="#" data-value="0-499">₹0 - ₹499</a>
+                            <a href="#" data-value="500-999">₹500 - ₹999</a>
+                            <a href="#" data-value="1000-1999">₹1000 - ₹1999</a>
+                            <a href="#" data-value="2000+">₹2000 and Above</a>
+                        </div>
+                    </div>
+                </div>
 
-            <div class="filters">
-                <select id="categoryFilter">
-                    <option value="">All Categories</option>
-                    <option value="clothing">Clothing</option>
-                    <option value="shoes">Shoes</option>
-                    <option value="accessories">Accessories</option>
-                </select>
-                <select id="priceFilter">
-                    <option value="">Price Range</option>
-                    <option value="0-50">$0 - $50</option>
-                    <option value="51-100">$51 - $100</option>
-                    <option value="101+">$101+</option>
-                </select>
-            </div>
+                <!-- Product Grid -->
+                <div id="productGrid" class="product-grid">
+                    <!-- Products will be dynamically inserted here -->
+                </div>
+            </main>
+        </div>
 
-            <div id="productGrid" class="product-grid">
-                <!-- Products will be dynamically inserted here -->
-            </div>
-        </main>
-    </div>
-
-    <script src="../JavaScript/app.js"></script>
-    <script src="../JavaScript/script.js"></script>
-</body>
+        <!-- JavaScript -->
+        <script src="../JavaScript/script.js"></script>
+    </body>
 </html>

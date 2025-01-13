@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     headers: {
                         "Content-Type": "application/json",
                     },
-                    body: JSON.stringify({ variable }), // Send the search term
+                    body: JSON.stringify({variable}), // Send the search term
                 });
 
                 if (!response.ok) {
@@ -31,7 +31,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 // Render the product list on the frontend
                 renderProductList(products);
-
             } catch (error) {
                 console.error("Error:", error);
                 alert("Error fetching product data.");
