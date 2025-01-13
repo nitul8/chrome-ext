@@ -54,6 +54,7 @@ document.addEventListener("DOMContentLoaded", function () {
             productCard.classList.add("product-card");
 
             productCard.innerHTML = `
+            <div class="product-card">
                 <div class="product-image-wrapper">
                     <img src="${product.thumbnail}" alt="${product.title}" />
                 </div>
@@ -65,6 +66,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         Buy Now
                     </button>
                 </div>
+            </div>
             `;
 
             productGrid.appendChild(productCard);
