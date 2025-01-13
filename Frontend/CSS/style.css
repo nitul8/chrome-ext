@@ -205,3 +205,30 @@ body {
 .buy-now-button:hover {
     background-color: #0056b3;
 }
+
+
+
+/*.google-shopping-section {
+    margin-top: 16px;
+    padding: 16px;
+    background-color: #f4f4f4;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+#related-products {
+    margin-top: 16px;
+}
+
+.related-product {
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+    gap: 12px;
+}
+
+.related-product img {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+*/
