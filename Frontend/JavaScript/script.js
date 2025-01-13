@@ -50,15 +50,24 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // Dynamically insert product data into the grid
         products.forEach((product) => {
-            const productItem = document.createElement("div");
-            productItem.classList.add("product-item");
-            productItem.innerHTML = `
-                <img src="${product.thumbnail}" alt="${product.title}" />
-                <h3>${product.title}</h3>
-                <p>${product.price}</p>
-                <a href="${product.link}" target="_blank">View Product</a>
+            const productCard = document.createElement("div");
+            productCard.classList.add("product-card");
+
+            productCard.innerHTML = `
+                <div class="product-image-wrapper">
+                    <img src="${product.thumbnail}" alt="${product.title}" />
+                </div>
+                <div class="product-details">
+                    <h3 class="product-title">${product.title}</h3>
+                    <p class="product-price">$${product.price}</p>
+                    <p class="product-store">${product.source}</p>
+                    <button class="buy-now-button" aria-label="Buy Now for ${product.title}">
+                        Buy Now
+                    </button>
+                </div>
             `;
-            productGrid.appendChild(productItem);
+
+            productGrid.appendChild(productCard);
         });
     }
 });
