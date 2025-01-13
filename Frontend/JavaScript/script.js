@@ -29,12 +29,14 @@ const products = [
 // DOM Elements
 const productGrid = document.getElementById("productGrid");
 const searchInput = document.getElementById("search-input");
-const priceFilter = document.getElementById("priceFilter");
+const priceDropdown = document.getElementById("priceDropdown");
 
 // Filter products based on search and filters
 function filterProducts() {
     const searchTerm = searchInput.value.toLowerCase();
-    const priceRange = priceFilter.value;
+    const priceRange = priceDropdown
+        .querySelector(".selected")
+        ?.getAttribute("data-value");
 
     return products.filter((product) => {
         const matchesSearch = product.title.toLowerCase().includes(searchTerm);
@@ -88,8 +90,44 @@ document.addEventListener("DOMContentLoaded", function () {
     displayProducts(products);
 
     searchInput.addEventListener("input", searchProducts);
-    priceFilter.addEventListener("change", searchProducts);
 
+    // Handle dropdown toggle
+    document.querySelector(".dropbtn").addEventListener("click", function () {
+        document.getElementById("priceDropdown").classList.toggle("show");
+    });
+
+    // Close dropdown if clicked outside
+    window.onclick = function (event) {
+        if (!event.target.matches(".dropbtn")) {
+            var dropdowns = document.getElementsByClassName("dropdown-content");
+            for (var i = 0; i < dropdowns.length; i++) {
+                var openDropdown = dropdowns[i];
+                if (openDropdown.classList.contains("show")) {
+                    openDropdown.classList.remove("show");
+                }
+            }
+        }
+    };
+
+    // Handle filter selection
+    const filterLinks = document.querySelectorAll(".dropdown-content a");
+    filterLinks.forEach((link) => {
+        link.addEventListener("click", function (event) {
+            event.preventDefault(); // Prevent default anchor behavior
+
+            // Remove 'selected' class from all links and add to the clicked one
+            filterLinks.forEach((link) => link.classList.remove("selected"));
+            this.classList.add("selected");
+
+            // Update the displayed products based on selected filter
+            searchProducts();
+
+            // Close dropdown after selection
+            document.getElementById("priceDropdown").classList.remove("show");
+        });
+    });
+
+    // Handle form submission
     const form = document.getElementById("myForm");
     if (form) {
         form.addEventListener("submit", async (event) => {
@@ -113,6 +151,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
+    // Handle file upload button click
     const uploadButton = document.getElementById("upload-btn");
     if (uploadButton && document.getElementById("file-input")) {
         uploadButton.addEventListener("click", async () => {

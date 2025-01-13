@@ -30,13 +30,22 @@
                         />
                         <button type="submit">Search</button>
                     </form>
-                    <select id="priceFilter" aria-label="Filter by price">
-                        <option value="">Filter</option>
-                        <option value="0-499">₹0 - ₹499</option>
-                        <option value="500-999">₹500 - ₹999</option>
-                        <option value="1000-1999">₹1000 - ₹1999</option>
-                        <option value="2000+">₹2000 and Above</option>
-                    </select>
+                    <div class="dropdown">
+                        <button class="dropbtn">
+                            <img
+                                src="path/to/filter-icon.png"
+                                alt="Filter"
+                                class="filter-icon"
+                            />
+                        </button>
+                        <div id="priceDropdown" class="dropdown-content">
+                            <a href="#" data-value="">Filter</a>
+                            <a href="#" data-value="0-499">₹0 - ₹499</a>
+                            <a href="#" data-value="500-999">₹500 - ₹999</a>
+                            <a href="#" data-value="1000-1999">₹1000 - ₹1999</a>
+                            <a href="#" data-value="2000+">₹2000 and Above</a>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- Product Grid -->
